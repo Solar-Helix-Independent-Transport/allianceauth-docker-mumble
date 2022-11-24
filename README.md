@@ -7,14 +7,19 @@ Everything below assumes you want to run this on the same server as your current
 if you wish to run mumble detached from auth, you will need to setup something to allow the ice/sql connection, ie a SSH tunnel, and update the env variables to match, this is outside of the scope of this guide.
 
 ## Setup
-1. Add this to the specified sections of your `docker-compose.yml`
+1. Add this to the specified sections of your `docker-compose.yml` and choose your image.
 ```yml
 services:
  ... snip ...
   mumble_auth:
     container_name: ${MUMBLE_HOST_NAME}
     hostname: ${MUMBLE_HOST_NAME}
-    image: mumble_auth:latest ##TODO fix this to work this is a local built image
+    # Choose an image, comment out or delete the other
+    # main tag has temp links baked in
+    image: ghcr.io/solar-helix-independent-transport/allianceauth-docker-mumble:main
+    # basic tag does not
+    image: ghcr.io/solar-helix-independent-transport/allianceauth-docker-mumble:basic
+    
     env_file:
       - ./.env
     restart: unless-stopped
