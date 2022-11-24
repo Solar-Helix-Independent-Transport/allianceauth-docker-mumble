@@ -27,8 +27,7 @@ RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 WORKDIR ${AUTH_HOME}
 
-# OPTIONAL TEMPLINKS? Use and emv variable
-RUN git clone https://gitlab.com/aaronkable/mumble-authenticator.git 
+RUN git clone https://gitlab.com/allianceauth/mumble-authenticator.git 
 
 WORKDIR ${AUTH_HOME}/mumble-authenticator
 
