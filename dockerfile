@@ -1,5 +1,5 @@
 FROM mumblevoip/mumble-server:latest
-#FROM python:3.10-slim
+#FROM python:3.12-slim
 ENV VIRTUAL_ENV=/home/allianceauth/venv
 ENV AUTH_HOME=/home/allianceauth
 ENV AUTH_USER=allianceauth
@@ -19,7 +19,7 @@ RUN mkdir -p ${VIRTUAL_ENV} \
 
 # Install build dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-    python3 python3-pip python3-dev python3-venv gcc git htop build-essential libssl-dev libbz2-dev libmariadb-dev python-dev supervisor pkg-config
+    gcc git htop build-essential libssl-dev libbz2-dev libmariadb-dev supervisor pkg-config
 
 # Switch to non-root user
 USER ${AUTH_USER}
