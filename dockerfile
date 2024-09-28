@@ -37,6 +37,8 @@ RUN pip install --upgrade pip
 RUN pip install wheel gunicorn mysqlclient
 RUN echo "Ice install will take quite some time (5+ Min) please be patient..."
 RUN pip install -r requirements.txt
+RUN mkdir /data
+RUM chown mumble:mumble /data
 
 # Initialize authenticator
 ADD ./docker-entrypoint.sh /home/allianceauth/docker-entrypoint.sh
