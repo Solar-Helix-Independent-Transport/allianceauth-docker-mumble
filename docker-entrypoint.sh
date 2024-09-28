@@ -12,6 +12,11 @@ sed -ri 's@&&MUMBLE_ICE_PORT&&@'${MUMBLE_ICE_PORT}'@' /home/allianceauth/mumble-
 # Bootstrap Murmurs config parser, but echo its command instead of launching mumble
 bash /entrypoint.sh echo
 
+if [ -f /mumble-server.sqlite ]; then
+    echo "Pulling Database in"
+    cp /mumble-server.sqlite /data/mumble-server.sqlite
+    chown mumble:mumble /data/mumble-server.sqlite
+fi
 # Start Mumble and authenticatot
 echo "Starting Supervisor Services"
 supervisord
